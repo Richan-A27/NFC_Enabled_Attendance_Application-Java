@@ -1,36 +1,34 @@
-# NFC_Enabled-Attendance-Tracking-Application
-
 # 📋 NFC-Based Attendance Management System
 
-This is a Java Swing desktop application that enables efficient, secure, and automated attendance tracking using NFC card readers. It integrates with a MySQL database to store student information and attendance logs. Designed as a part of a course project at **Karunya Institute of Technology and Sciences**.
+A desktop application for marking and managing student attendance using NFC cards. Built with Java Swing for GUI, MySQL for backend storage, and integrated with serial port-based NFC reader hardware.
 
 ---
 
 ## ✨ Features
 
-- 🔐 **Login Screen** (Admin authentication)
-- 🧑‍🏫 **Student Registration** with department & year categorization
-- 📲 **NFC UID Reading** from physical NFC cards using serial port
-- 📅 **Real-time Attendance Marking** into a MySQL database
-- 📂 View, download, and clear attendance logs
-- 💾 Stores data persistently in a MySQL database
+- 🔐 Admin login screen
+- 🧑‍🎓 Student registration with department/year selection
+- 📲 NFC card UID reading via serial port (using jSerialComm)
+- ✅ Real-time attendance marking and storage in MySQL
+- 📄 View, clear, and download attendance records
+- 🎨 Polished UI using Java Swing with custom styles
 
 ---
 
 ## 📂 Project Structure
 
 .
-├── AttendanceManagementSystem.java # Entry point
+├── AttendanceManagementSystem.java # App entry point
 ├── LoginWindow.java # Login GUI
-├── MainAttendanceWindow.java # Main dashboard after login
-├── registerStudent_DB.java # Handles student registration logic
-├── attendance_DBMethods.java # Attendance logic (record, view, clear, download)
-├── NFCReader.java # NFC card reader logic using jSerialComm
-├── BaseDB.java # MySQL DB connection management
-├── attendance_DB.java # Attendance table definition logic
-├── AttendanceMarkingException.java # Custom exception for marking failures
-├── InvalidStudentDataException.java # Custom exception for invalid student registration
-└── README.md # You are here
+├── MainAttendanceWindow.java # Attendance dashboard
+├── NFCReader.java # UID reading from NFC card
+├── registerStudent_DB.java # Handles student registration
+├── attendance_DBMethods.java # Attendance logic
+├── attendance_DB.java # Optional database helper
+├── BaseDB.java # MySQL connection setup
+├── AttendanceMarkingException.java # Custom exception for marking errors
+├── InvalidStudentDataException.java # Custom exception for registration validation
+└── README.md # This file
 
 yaml
 Copy
@@ -38,27 +36,34 @@ Edit
 
 ---
 
-## 🛠️ Requirements
+## 🧰 Tech Stack
 
-- Java 8 or later
-- MySQL Server (e.g. XAMPP, WAMP, standalone)
-- [jSerialComm](https://fazecast.github.io/jSerialComm/) library for serial communication
-- NFC Reader (compatible with COM port, 9600 baud rate)
+- **Java 8+**
+- **Java Swing**
+- **MySQL**
+- **jSerialComm** (for NFC reader serial communication)
+- **JDBC** (for database interaction)
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Prerequisites
 
-### 🔌 Step 1: Database Setup
+- Java installed and configured
+- MySQL Server installed and running
+- NFC reader connected via USB (configured at 9600 baud rate)
+- Add `jSerialComm` library to your project’s build path (download from: https://fazecast.github.io/jSerialComm/)
 
-1. **Create database**:
-   ```sql
-   CREATE DATABASE students_db;
-Create students table:
+---
 
-sql
-Copy
-Edit
+## 🔧 Setup Instructions
+
+### 🗃️ Step 1: MySQL Database Setup
+
+1. Open MySQL client and run:
+
+```sql
+CREATE DATABASE students_db;
+
 CREATE TABLE students (
     id VARCHAR(10) PRIMARY KEY,
     name VARCHAR(100),
@@ -67,81 +72,58 @@ CREATE TABLE students (
     department VARCHAR(10),
     year INT
 );
-Create attendance table:
 
-sql
-Copy
-Edit
 CREATE TABLE attendance (
     uid VARCHAR(50),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-💻 Step 2: Code Configuration
-Open the project in your IDE.
-
-Update MySQL credentials in BaseDB.java:
+Update BaseDB.java with your MySQL credentials:
 
 java
 Copy
 Edit
 protected static final String DB_URL = "jdbc:mysql://localhost:3306/students_db";
 protected static final String USER = "root";
-protected static final String PASS = "mysqlroot"; // or your password
-Add jSerialComm to your project build path.
+protected static final String PASS = "mysqlroot";
+🖥️ Running the App
+Compile and run AttendanceManagementSystem.java
 
-🧪 How to Use
-1. Launch the app
-Run AttendanceManagementSystem.java.
-
-2. Login
-Use default credentials:
+Login with:
 
 pgsql
 Copy
 Edit
 Username: admin
 Password: password
-3. Use Main Features
-Click Register Student to add a new student with UID.
+From the dashboard, you can:
 
-Click Record Attendance and scan an NFC card to mark attendance.
+Register students
 
-Use View, Download, or Clear Attendance for managing logs.
+Start attendance recording
 
-📥 Output
-Attendance files are downloaded as .txt to:
+View, download, or clear records
+
+📁 Output Files
+Attendance logs are saved as .txt files in:
 
 bash
 Copy
 Edit
 /Attendance_data/attendance_record_<timestamp>.txt
-🧩 Known Limitations
-Static admin login (can be enhanced with hashed credentials).
+🚧 Limitations
+Static login credentials (admin/password)
 
-No encryption between app and MySQL (can be improved for production).
+No encryption in DB communication
 
-UID must be unique and pre-registered for valid attendance.
+Requires prior UID registration to mark attendance
 
-🧑‍💻 Contributors
-Developed by:
-
+👨‍💻 Developed By
 Richan Abraham J.R.
-
-Kersen (Co-Developer)
+Kersen
 Karunya Institute of Technology and Sciences
+Object-Oriented Programming Course Project
 
-📜 License
-This project is provided under the MIT License. Free to use and modify for educational purposes.
+📄 License
+This project is licensed under the MIT License.
+You are free to use, modify, and share it for educational purposes.
 
-python
-Copy
-Edit
-
-Let me know if you'd like:
-
-- A zipped project folder
-- SQL file (`.sql`) for direct import
-- Enhanced features like email alerts or attendance graphs  
-- A GitHub-friendly project logo or badge section
-
-I'll be happy to help!
