@@ -17,20 +17,20 @@ A desktop application for marking and managing student attendance using NFC card
 
 ## 📂 Project Structure
 
+```text
 .
-├── AttendanceManagementSystem.java # App entry point
-├── LoginWindow.java # Login GUI
-├── MainAttendanceWindow.java # Attendance dashboard
-├── NFCReader.java # UID reading from NFC card
-├── registerStudent_DB.java # Handles student registration
-├── attendance_DBMethods.java # Attendance logic
-├── attendance_DB.java # Optional database helper
-├── BaseDB.java # MySQL connection setup
-├── AttendanceMarkingException.java # Custom exception for marking errors
-├── InvalidStudentDataException.java # Custom exception for registration validation
-└── README.md # This file
+├── AttendanceManagementSystem.java       # Entry point
+├── LoginWindow.java                      # Login GUI
+├── MainAttendanceWindow.java             # Dashboard GUI after login
+├── NFCReader.java                        # Handles NFC UID reading via serial port
+├── registerStudent_DB.java               # Student registration handler
+├── attendance_DBMethods.java             # Attendance logic (record, view, clear, download)
+├── attendance_DB.java                    # DB helper (if used)
+├── BaseDB.java                           # Manages MySQL DB connection
+├── AttendanceMarkingException.java       # Custom exception class
+├── InvalidStudentDataException.java      # Custom validation exception
+└── README.md                             # This file
 
----
 
 ## 🧰 Tech Stack
 
