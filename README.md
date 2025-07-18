@@ -6,18 +6,18 @@ A desktop application for marking and managing student attendance using NFC card
 
 ## ✨ Features
 
-- 🔐 Admin login screen
-- 🧑‍🎓 Student registration with department/year selection
-- 📲 NFC card UID reading via serial port (using jSerialComm)
-- ✅ Real-time attendance marking and storage in MySQL
-- 📄 View, clear, and download attendance records
-- 🎨 Polished UI using Java Swing with custom styles
+- 🔐 Admin login screen  
+- 🧑‍🎓 Student registration with department/year selection  
+- 📲 NFC card UID reading via serial port (using jSerialComm)  
+- ✅ Real-time attendance marking and storage in MySQL  
+- 📄 View, clear, and download attendance records  
+- 🎨 Polished UI using Java Swing with custom styles  
 
 ---
 
 ## 📂 Project Structure
 
-```text
+```te
 .
 ├── AttendanceManagementSystem.java       # Entry point
 ├── LoginWindow.java                      # Login GUI
@@ -31,33 +31,22 @@ A desktop application for marking and managing student attendance using NFC card
 ├── InvalidStudentDataException.java      # Custom validation exception
 └── README.md                             # This file
 
+⚙️ Prerequisites
+Java installed and configured
 
-## 🧰 Tech Stack
+MySQL Server installed and running
 
-- **Java 8+**
-- **Java Swing**
-- **MySQL**
-- **jSerialComm** (for NFC reader serial communication)
-- **JDBC** (for database interaction)
+NFC reader connected via USB (configured at 9600 baud rate)
 
----
+Add jSerialComm library to your project’s build path
 
-## ⚙️ Prerequisites
+📥 Download jSerialComm
 
-- Java installed and configured
-- MySQL Server installed and running
-- NFC reader connected via USB (configured at 9600 baud rate)
-- Add `jSerialComm` library to your project’s build path (download from: https://fazecast.github.io/jSerialComm/)
+🔧 Setup Instructions
+🗃️ Step 1: MySQL Database Setup
+Run the following SQL commands:
 
----
 
-## 🔧 Setup Instructions
-
-### 🗃️ Step 1: MySQL Database Setup
-
-1. Open MySQL client and run:
-
-```sql
 CREATE DATABASE students_db;
 
 CREATE TABLE students (
@@ -73,22 +62,18 @@ CREATE TABLE attendance (
     uid VARCHAR(50),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-Update BaseDB.java with your MySQL credentials:
+🔑 Step 2: Update Database Credentials
+Edit the BaseDB.java file with your MySQL credentials:
 
-java
-Copy
-Edit
 protected static final String DB_URL = "jdbc:mysql://localhost:3306/students_db";
 protected static final String USER = "root";
 protected static final String PASS = "mysqlroot";
-🖥️ Running the App
+🖥️ Step 3: Run the Application
 Compile and run AttendanceManagementSystem.java
 
-Login with:
+Login with the following credentials:
 
-pgsql
-Copy
-Edit
+
 Username: admin
 Password: password
 From the dashboard, you can:
@@ -100,11 +85,9 @@ Start attendance recording
 View, download, or clear records
 
 📁 Output Files
-Attendance logs are saved as .txt files in:
+Attendance logs are saved as .txt files in the following directory:
 
-bash
-Copy
-Edit
+
 /Attendance_data/attendance_record_<timestamp>.txt
 🚧 Limitations
 Static login credentials (admin/password)
@@ -113,13 +96,6 @@ No encryption in DB communication
 
 Requires prior UID registration to mark attendance
 
-👨‍💻 Developed By
-Richan Abraham J.R.
-Kersen
-Karunya Institute of Technology and Sciences
-Object-Oriented Programming Course Project
-
 📄 License
 This project is licensed under the MIT License.
-You are free to use, modify, and share it for educational purposes.
-
+You are free to use, modify, and share it for educational purposes. ```
