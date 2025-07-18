@@ -30,10 +30,6 @@ A desktop application for marking and managing student attendance using NFC card
 ├── InvalidStudentDataException.java # Custom exception for registration validation
 └── README.md # This file
 
-yaml
-Copy
-Edit
-
 ---
 
 ## 🧰 Tech Stack
